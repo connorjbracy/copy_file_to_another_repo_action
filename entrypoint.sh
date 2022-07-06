@@ -3,6 +3,9 @@
 set -e
 set -x
 
+echo "INPUT_REPO_LEVEL_SEC"
+echo $INPUT_REPO_LEVEL_SEC
+
 echo "printenv"
 printenv
 echo "printenv | grep API_TOKEN_GITHUB"
