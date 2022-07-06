@@ -3,7 +3,16 @@
 set -e
 set -x
 
+echo "printenv"
 printenv
+echo "printenv | grep"
+printenv | grep -iP "(secret|action|TOKEN)"
+echo "printenv | grep | wc"
+printenv | grep -iP "(secret|action|TOKEN)" | wc -l
+echo "printenv | grep API_TOKEN_GITHUB"
+printenv | grep -i "API_TOKEN_GITHUB" | wc -l
+echo "printenv | grep API_TOKEN_GITHUB | wc -l"
+printenv | grep -i "API_TOKEN_GITHUB"
 
 if [ -z "$INPUT_SOURCE_FILE" ]
 then
