@@ -5,14 +5,22 @@ set -x
 
 echo "printenv"
 printenv
-echo "printenv | grep"
-printenv | grep -iP "(secret|action|TOKEN)"
-echo "printenv | grep | wc"
-printenv | grep -iP "(secret|action|TOKEN)" | wc -l
 echo "printenv | grep API_TOKEN_GITHUB"
-printenv | grep -i "API_TOKEN_GITHUB" | wc -l
-echo "printenv | grep API_TOKEN_GITHUB | wc -l"
 printenv | grep -i "API_TOKEN_GITHUB"
+echo "printenv | grep API_TOKEN_GITHUB | wc -l"
+printenv | grep -i "API_TOKEN_GITHUB" | wc -l
+echo "printenv | grep secret"
+printenv | grep -i "secret"
+echo "printenv | grep secret | wc"
+printenv | grep -i "secret" | wc -l
+echo "printenv | grep action"
+printenv | grep -i "action"
+echo "printenv | grep action | wc"
+printenv | grep -i "action" | wc -l
+echo "printenv | grep TOKEN"
+printenv | grep -i "TOKEN"
+echo "printenv | grep TOKEN | wc"
+printenv | grep -i "TOKEN" | wc -l
 
 if [ -z "$INPUT_SOURCE_FILE" ]
 then
