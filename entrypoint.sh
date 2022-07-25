@@ -52,21 +52,23 @@ git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://x-access-t
 if [ ! -z "$INPUT_RENAME" ]
 then
   echo "Setting new filename: ${INPUT_RENAME}"
-  DEST_COPY="$CLONE_DIR/$INPUT_DESTINATION_FOLDER/$INPUT_RENAME"
+  DEST_COPY="$(realpath "$CLONE_DIR"/"$INPUT_DESTINATION_FOLDER"/"$INPUT_RENAME")"
 else
-  DEST_COPY="$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
+  DEST_COPY="$(realpath "$CLONE_DIR"/"$INPUT_DESTINATION_FOLDER")"
 fi
 
 echo "Showing cwd contents"
 ls -la .
 
 echo "Copying contents to git repo"
-mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
+mkdir -p "$(realpath "$CLONE_DIR"/"$INPUT_DESTINATION_FOLDER")"
 if [ -z "$INPUT_USE_RSYNC" ]
 then
+  echo "Doing cp -R '$INPUT_SOURCE_FILE' '$DEST_COPY'"
   cp -R "$INPUT_SOURCE_FILE" "$DEST_COPY"
 else
   echo "rsync mode detected"
+  echo "rsync -avrh '$INPUT_SOURCE_FILE' '$DEST_COPY'"
   rsync -avrh "$INPUT_SOURCE_FILE" "$DEST_COPY"
 fi
 
