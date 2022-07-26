@@ -64,8 +64,8 @@ echo "Copying contents to git repo"
 mkdir -p "$(realpath "$CLONE_DIR"/"$INPUT_DESTINATION_FOLDER")"
 if [ -z "$INPUT_USE_RSYNC" ]
 then
-  echo "Doing cp -a '$INPUT_SOURCE_FILE' '$DEST_COPY'"
-  cp -a "$INPUT_SOURCE_FILE" "$DEST_COPY"
+  echo "Doing cp -av '$INPUT_SOURCE_FILE' '$DEST_COPY'"
+  cp -av "$INPUT_SOURCE_FILE" "$DEST_COPY"
 else
   echo "rsync mode detected"
   echo "rsync -avrh '$INPUT_SOURCE_FILE' '$DEST_COPY'"
