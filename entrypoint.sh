@@ -64,6 +64,9 @@ echo "Copying contents to git repo"
 mkdir -p "$(realpath "$CLONE_DIR"/"$INPUT_DESTINATION_FOLDER")"
 if [ -z "$INPUT_USE_RSYNC" ]
 then
+  if [ -d $INPUT_SOURCE_FILE ]; then
+    INPUT_SOURCE_FILE="$(realpath $INPUT_SOURCE_FILE)/."
+  fi
   echo "Doing cp -av '$INPUT_SOURCE_FILE' '$DEST_COPY'"
   cp -av "$INPUT_SOURCE_FILE" "$DEST_COPY"
 else
